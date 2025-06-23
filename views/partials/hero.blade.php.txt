@@ -1,0 +1,5 @@
+<section class="hero" id="home">
+    <h1>Welcome to the Future</h1>
+    <p>Experience the 2025 Design Revolution</p>
+    <button class="btn primary" id="getStartedBtn">Get Started</button>
+</section>

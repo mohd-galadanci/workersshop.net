@@ -1,0 +1,13 @@
+<section class="dashboard" id="dashboard">
+    <h2>Dashboard</h2>
+    <div class="stats">
+        <div class="card"><h3>Pending</h3><span>4</span></div>
+        <div class="card"><h3>Approved</h3><span>12</span></div>
+        <div class="card"><h3>Rejected</h3><span>2</span></div>
+    </div>
+    <div class="requests">
+        <h3>Recent Requests</h3>
+        <div class="request-item">Sample Request #1 - Pending</div>
+        <div class="request-item">Sample Request #2 - Approved</div>
+    </div>
+</section>

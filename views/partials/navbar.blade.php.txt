@@ -1,0 +1,15 @@
+<nav class="future-navbar">
+    <span class="brand">Future<span class="highlight">2025</span></span>
+    <div class="nav-actions">
+        @guest
+            <button class="btn outline" id="loginBtn">Login</button>
+            <button class="btn primary" id="registerBtn">Register</button>
+        @else
+            <span class="user-name">Hello, {{ Auth::user()->name }}</span>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="btn outline">Logout</button>
+            </form>
+        @endguest
+    </div>
+</nav>

@@ -1,0 +1,8 @@
+@extends('layouts.app')
+
+@section('content')
+    @include('partials.hero')
+    @auth
+        @include('partials.dashboard')
+    @endauth
+@endsection
