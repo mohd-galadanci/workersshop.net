@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workersshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-utensils"></i>
+                <span>FoodAdvance</span>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="registerBtn">Register</button>
+            </div>
+            <div class="user-menu hidden" id="userMenu">
+                <span class="user-name" id="userName">Welcome!</span>
+                <button class="btn btn-outline" id="logoutBtn">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Login Modal -->
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                    <button class="close-btn" id="closeLogin">&times;</button>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginIppis">IPPIS Number</label>
+                        <input type="text" id="loginIppis" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+                <div class="modal-footer">
+                    <p>Or login with face recognition</p>
+                    <button class="btn btn-secondary" id="faceAuthBtn">
+                        <i class="fas fa-camera"></i> Face Authentication
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-user-plus"></i> Register</h2>
+                    <button class="close-btn" id="closeRegister">&times;</button>
+                </div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regIppis">IPPIS Number</label>
+                        <input type="text" id="regIppis" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regDepartment">Department</label>
+                        <input type="text" id="regDepartment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPasswordConfirm">Confirm Password</label>
+                        <input type="password" id="regPasswordConfirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-section" id="welcomeSection">
+                <div class="hero">
+                    <h1>Welcome to FoodAdvance</h1>
+                    <p>Your digital food request management system</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" id="getStartedBtn">
+                            <i class="fas fa-rocket"></i> Get Started
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard hidden" id="dashboard">
+                <div class="dashboard-header">
+                    <h1>Dashboard</h1>
+                    <button class="btn btn-primary" id="newRequestBtn">
+                        <i class="fas fa-plus"></i> New Request
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pendingCount">0</h3>
+                            <p>Pending</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon approved">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="approvedCount">0</h3>
+                            <p>Approved</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon rejected">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="rejectedCount">0</h3>
+                            <p>Rejected</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="requests-section">
+                    <h2>Recent Requests</h2>
+                    <div class="requests-list" id="requestsList">
+                        <!-- Requests will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- New Request Modal -->
+        <div class="modal" id="newRequestModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-utensils"></i> New Food Request</h2>
+                    <button class="close-btn" id="closeNewRequest">&times;</button>
+                </div>
+                <form id="newRequestForm">
+                    <div class="form-group">
+                        <label for="requestItem">Food Item</label>
+                        <input type="text" id="requestItem" placeholder="e.g., Lunch, Breakfast, Snacks" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestQuantity">Quantity</label>
+                        <input type="number" id="requestQuantity" min="1" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestDate">Requested Date</label>
+                        <input type="date" id="requestDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestNotes">Notes (Optional)</label>
+                        <textarea id="requestNotes" rows="3" placeholder="Any special requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i> Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="chatbot-widget" style="display: none;">
+        <div id="chatbot-toggle">
+            <span>💬</span>
+        </div>
+        <div id="chatbot-container" style="display: none;">
+            <div id="chatbot-header">
+                <h4>AI Assistant</h4>
+                <button id="chatbot-close">×</button>
+            </div>
+            <div id="chatbot-messages"></div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything about the system...">
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
