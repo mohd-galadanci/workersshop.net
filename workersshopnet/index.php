@@ -37,4 +37,3 @@ if (strpos($requestUri, '/api/') === 0) {
         }
     }
 }
-$requests = $query->orderBy('created_at', 'desc')->paginate(6);
